@@ -26,8 +26,18 @@ export default class BooksController {
     console.log('Données recues:', request.all())
     // Récupération des données envoyées par le client
     // Récupère les données envoyés par le client et validation des données
-    const { title, numberOfPages, pdfLink, abstract, editor, editionYear, imagePath, userId, categoryId, writerId } =
-      await request.validateUsing(bookValidator) // Ajout Jess userId
+    const {
+      title,
+      numberOfPages,
+      pdfLink,
+      abstract,
+      editor,
+      editionYear,
+      imagePath,
+      userId,
+      categoryId,
+      writerId,
+    } = await request.validateUsing(bookValidator) // Ajout Jess userId
 
     // Création du livre avec les données validées
     const book = await Book.create({
@@ -46,37 +56,37 @@ export default class BooksController {
     return response.created(book)
   }
 
-async show({ params, response }: HttpContext) {
-  const book = await Book.query()
-    .where('id', params.id)
-    .preload('category')
-    .preload('user')
-    .preload('writer')
-    .preload('comments', (q) => q.preload('user'))
-    .preload('evaluate')
-    .firstOrFail()
+  async show({ params, response }: HttpContext) {
+    const book = await Book.query()
+      .where('id', params.id)
+      .preload('category')
+      .preload('user')
+      .preload('writer')
+      .preload('comments', (q) => q.preload('user'))
+      .preload('evaluate')
+      .firstOrFail()
 
-  return response.ok(book)
-}
+    return response.ok(book)
+  }
 
-async myBooks({ auth, response }: HttpContext) {
-  const user = await auth.authenticate()
+  async myBooks({ auth, response }: HttpContext) {
+    const user = await auth.authenticate()
 
-  const books = await Book.query()
-    .where('user_id', user.id)
-    .preload('category')
-    .preload('writer')
-    .preload('user')
-    .preload('evaluate')
-    .preload('comments')
+    const books = await Book.query()
+      .where('user_id', user.id)
+      .preload('category')
+      .preload('writer')
+      .preload('user')
+      .preload('evaluate')
+      .preload('comments')
 
-  return response.ok(books)
-}
+    return response.ok(books)
+  }
   async update({ auth, request, params, response, bouncer }: HttpContext) {
     // Mettre à jour un livre
     const { title, numberOfPages, pdfLink, abstract, editor, editionYear, imagePath } =
       await request.validateUsing(bookValidator)
-    const user = await auth.authenticate()
+    //const user = await auth.authenticate()
 
     // Vérification de l'existance du livre
     const book = await Book.query().where('id', params.id).firstOrFail()
@@ -122,5 +132,4 @@ async myBooks({ auth, response }: HttpContext) {
 
     return response.ok(booksByCategory)
   }
-  
 }
