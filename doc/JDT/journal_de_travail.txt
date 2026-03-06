@@ -1,0 +1,23 @@
+26.09.2025
+Francisco Sousa
+4 périodes
+Travail sur la création de l'entité catégory sur adonis js, j'ai mis en place le model, le seeder, le verificateur et le controlleur
+
+02.10.2025
+mise à jour contrlleur, validator, et db.
+createion du seeder de book
+fix: la db qui n'était pas en norme à cause de majuscules
+mise en place du validator et mise à jour de la migration de user
+initialisation du controlleur et du validator de user
+mise à jour des models
+fini le contoleur de catagory
+Avancement du controller
+
+journal de travail 10.10.2025
+Nous avons fait le test durant la matinée.
+Corriger les erreurs dans le code.
+Organiser les routes avec le groupe.
+Beaucoup de pair Programming.
+Création du model User ainsi que le seeder User.
+Test des routes avec Bruno.
+Mise en place des models Comments et Evaluate et de la base de données.

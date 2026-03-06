@@ -1,0 +1,16 @@
+meta {
+  name: Delete a Writer to a book
+  type: http
+  seq: 10
+}
+
+delete {
+  url: http://localhost:3333/books/1/writers/3
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

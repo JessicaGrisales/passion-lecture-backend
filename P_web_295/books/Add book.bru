@@ -1,0 +1,32 @@
+meta {
+  name: Add book
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:3333/api/books/
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    
+      "title": "Gros-Ami",
+      "numberOfPages": 400,
+      "pdfLink": "https://xample.com/bel-ami.pdf",
+      "abstract": "Roman de Maupassant sur la société parisienne...",
+      "editor": "Paul Ollendorff",
+      "editionYear": 1885,
+      "imagePath": "/images/bel-ami.jpg",
+      "categoryId": 1,
+      "writerId": 1,
+      "userId": 2
+    }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

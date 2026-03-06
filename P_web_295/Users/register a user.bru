@@ -1,0 +1,23 @@
+meta {
+  name: register a user
+  type: http
+  seq: 11
+}
+
+post {
+  url: http://localhost:3333/user/register
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "username": "mort",
+    "hashPassword":"12345678"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

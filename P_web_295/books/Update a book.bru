@@ -1,0 +1,36 @@
+meta {
+  name: Update a book
+  type: http
+  seq: 4
+}
+
+put {
+  url: http://localhost:3333/api/books/2
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: oat_MQ.MHd0MlN6bHExakJGUndVQ2RzeGZOaTc1UjEzOXlMVUtWU1dhYlJJTzM0MTE1OTYxNzU
+}
+
+body:json {
+  {
+    
+      "title": "pas-d-Ami2",
+      "numberOfPages": 400,
+      "pdfLink": "https://xample.com/bel-ami2.pdf",
+      "abstract": "Roman de Maupassant sur la société parisienne...",
+      "editor": "Paul Ollendorff",
+      "editionYear": 1885,
+      "imagePath": "/images/bel-ami.jpg",
+      "categoryId": 1,
+      "writerId": 1,
+      "userId": 2
+    }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

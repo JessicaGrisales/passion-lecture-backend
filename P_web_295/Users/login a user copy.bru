@@ -1,0 +1,23 @@
+meta {
+  name: login a user copy
+  type: http
+  seq: 12
+}
+
+post {
+  url: http://localhost:3333/user/login
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "username": "mort",
+    "hashPassword":"12345678"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
