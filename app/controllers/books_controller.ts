@@ -82,7 +82,7 @@ export default class BooksController {
 
     return response.ok(books)
   }
-  async update({ auth, request, params, response, bouncer }: HttpContext) {
+  async update({ request, params, response, bouncer }: HttpContext) {
     // Mettre à jour un livre
     const { title, numberOfPages, pdfLink, abstract, editor, editionYear, imagePath } =
       await request.validateUsing(bookValidator)
